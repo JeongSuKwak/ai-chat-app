@@ -54,11 +54,11 @@ export function ChatSidebar({ isOpen, onToggle }: ChatSidebarProps) {
 
   return (
     <>
-      {/* Toggle Button (when sidebar is closed) */}
+      {/* Toggle Button (when sidebar is closed) - Desktop only */}
       {!isOpen && (
         <button
           onClick={onToggle}
-          className="fixed top-4 left-4 z-20 p-2 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg shadow-sm hover:bg-zinc-50 dark:hover:bg-zinc-700 transition-colors"
+          className="hidden md:flex fixed top-4 left-4 z-20 p-2 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg shadow-sm hover:bg-zinc-50 dark:hover:bg-zinc-700 transition-colors"
           title="사이드바 열기"
         >
           <PanelLeft className="w-5 h-5" />
