@@ -348,7 +348,7 @@ export default function Home() {
                 </button>
 
                 {modelDropdownOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-[calc(100vw-24px)] md:w-72 max-w-72 bg-white dark:bg-zinc-800 rounded-lg shadow-lg border dark:border-zinc-700 overflow-hidden z-50">
+                  <div className="fixed md:absolute top-auto md:top-full left-2 right-2 md:left-0 md:right-auto mt-2 md:w-72 bg-white dark:bg-zinc-800 rounded-lg shadow-xl border dark:border-zinc-700 overflow-hidden z-[9999]">
                     {AVAILABLE_MODELS.map((model) => (
                       <button
                         key={model.id}
@@ -446,11 +446,11 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center h-full text-gray-500 dark:text-gray-400">
               {/* Christmas decoration */}
               <div className="text-6xl mb-4 animate-bounce">🎄</div>
-              <h2 className="text-2xl font-bold mb-2 text-red-600 dark:text-red-400">
-                Merry Christmas! 🎅
+              <h2 className="text-xl md:text-2xl font-bold mb-2 text-red-600 dark:text-red-400">
+                SORANGSU AI에 오신걸 환영합니다! 🎅
               </h2>
-              <p className="text-green-600 dark:text-green-400 mb-4">
-                ✨ {selectedModel.name}과 대화를 시작하세요 ✨
+              <p className="text-green-600 dark:text-green-400 mb-4 text-sm md:text-base">
+                ✨ Merry Christmas! ✨
               </p>
               {!currentSession && (
                 <p className="text-sm mt-2 text-gray-500 dark:text-gray-400">
