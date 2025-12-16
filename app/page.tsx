@@ -281,7 +281,14 @@ export default function Home() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50 dark:bg-zinc-900 text-gray-900 dark:text-gray-100 font-sans">
+    <div className="flex h-screen christmas-bg-light dark:christmas-bg text-gray-900 dark:text-gray-100 font-sans relative overflow-hidden">
+      {/* Snow Effect */}
+      <div className="pointer-events-none">
+        {[...Array(15)].map((_, i) => (
+          <div key={i} className="snowflake">❄</div>
+        ))}
+      </div>
+
       {/* Sidebar */}
       <ChatSidebar isOpen={sidebarOpen} onToggle={() => setSidebarOpen(!sidebarOpen)} />
 
@@ -292,7 +299,9 @@ export default function Home() {
         }`}
       >
         {/* Header - Single row on all devices */}
-        <header className="bg-white dark:bg-zinc-950 border-b dark:border-zinc-800 shadow-sm z-10">
+        <header className="bg-white/90 dark:bg-zinc-950/90 backdrop-blur-sm border-b border-red-200 dark:border-green-900 shadow-sm z-10 relative">
+          {/* Christmas garland decoration */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-green-500 to-red-500"></div>
           <div className="flex items-center justify-between px-2 md:px-6 py-2 md:py-4">
             <div className="flex items-center gap-1.5 md:gap-3">
               {/* Sidebar Toggle - Mobile */}
@@ -432,19 +441,34 @@ export default function Home() {
         </header>
 
         {/* Chat List */}
-        <main className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 relative z-10">
           {!currentSession || messages.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-full text-gray-400">
-              <Bot className="w-12 h-12 mb-4 opacity-20" />
-              <p>Start a conversation with {selectedModel.name}</p>
+            <div className="flex flex-col items-center justify-center h-full text-gray-500 dark:text-gray-400">
+              {/* Christmas decoration */}
+              <div className="text-6xl mb-4 animate-bounce">🎄</div>
+              <h2 className="text-2xl font-bold mb-2 text-red-600 dark:text-red-400">
+                Merry Christmas! 🎅
+              </h2>
+              <p className="text-green-600 dark:text-green-400 mb-4">
+                ✨ {selectedModel.name}과 대화를 시작하세요 ✨
+              </p>
               {!currentSession && (
-                <p className="text-sm mt-2">사이드바에서 새 채팅을 시작하세요</p>
+                <p className="text-sm mt-2 text-gray-500 dark:text-gray-400">
+                  🎁 사이드바에서 새 채팅을 시작하세요
+                </p>
               )}
               {connectedCount > 0 && mcpEnabled && (
                 <p className="text-sm mt-2 text-green-500">
                   🔧 {connectedCount}개의 MCP 도구가 활성화되어 있습니다
                 </p>
               )}
+              <div className="flex gap-2 mt-4 text-3xl">
+                <span>🦌</span>
+                <span>🎁</span>
+                <span>⭐</span>
+                <span>🔔</span>
+                <span>❄️</span>
+              </div>
             </div>
           ) : (
             <>
@@ -499,7 +523,7 @@ export default function Home() {
         </main>
 
         {/* Input Area */}
-        <div className="px-3 py-3 md:p-4 bg-white dark:bg-zinc-950 border-t dark:border-zinc-800">
+        <div className="px-3 py-3 md:p-4 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-sm border-t border-red-200 dark:border-green-900 relative z-10">
           <form
             onSubmit={handleSubmit}
             className="max-w-3xl mx-auto flex items-center gap-2 relative"
@@ -507,14 +531,14 @@ export default function Home() {
             <input
               ref={inputRef}
               type="text"
-              placeholder={`Message ${selectedModel.provider === "gemini" ? "Gemini" : "Claude"}...`}
+              placeholder={`🎄 ${selectedModel.provider === "gemini" ? "Gemini" : "Claude"}에게 메시지 보내기...`}
               disabled={isLoading}
-              className="flex-1 px-3 md:px-4 py-2.5 md:py-3 bg-gray-100 dark:bg-zinc-900 border-0 rounded-full focus:ring-2 focus:ring-blue-500 focus:outline-none disabled:opacity-50 text-sm md:text-base"
+              className="flex-1 px-3 md:px-4 py-2.5 md:py-3 bg-gray-100 dark:bg-zinc-900 border-2 border-transparent focus:border-red-300 dark:focus:border-green-700 rounded-full focus:ring-2 focus:ring-red-200 dark:focus:ring-green-800 focus:outline-none disabled:opacity-50 text-sm md:text-base"
             />
             <button
               type="submit"
               disabled={isLoading}
-              className="p-2.5 md:p-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="p-2.5 md:p-3 bg-gradient-to-r from-red-500 to-green-500 text-white rounded-full hover:from-red-600 hover:to-green-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg"
             >
               {isLoading ? (
                 <Loader2 className="w-4 h-4 md:w-5 md:h-5 animate-spin" />
@@ -523,10 +547,10 @@ export default function Home() {
               )}
             </button>
           </form>
-          <p className="text-xs text-center text-gray-400 mt-2 hidden md:block">
-            {selectedModel.name} can make mistakes. Consider checking important information.
+          <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-2 hidden md:block">
+            🎅 {selectedModel.name}이 도와드립니다. Merry Christmas! 🎄
             {mcpEnabled && connectedCount > 0 && (
-              <span className="ml-2 text-green-500">• MCP 도구 활성화됨</span>
+              <span className="ml-2 text-green-500">• 🎁 MCP 도구 활성화됨</span>
             )}
           </p>
         </div>
