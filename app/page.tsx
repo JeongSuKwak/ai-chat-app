@@ -294,7 +294,19 @@ export default function Home() {
         {/* Header */}
         <header className="flex items-center justify-between px-6 py-4 bg-white dark:bg-zinc-950 border-b dark:border-zinc-800 shadow-sm z-10">
           <div className="flex items-center gap-3">
-            <Bot className="w-6 h-6 text-blue-500" />
+            {/* SORANGSU Logo */}
+            <div className="flex items-center gap-2">
+              <div className="relative">
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 via-purple-500 to-fuchsia-500 flex items-center justify-center shadow-lg">
+                  <span className="text-white font-black text-sm">S</span>
+                </div>
+                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-400 rounded-full border-2 border-white dark:border-zinc-950"></div>
+              </div>
+              <span className="font-extrabold text-lg tracking-tight bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 bg-clip-text text-transparent">
+                SORANGSU
+              </span>
+            </div>
+            <div className="w-px h-6 bg-zinc-200 dark:bg-zinc-700 mx-1"></div>
             
             {/* Model Selector */}
             <div className="relative" ref={dropdownRef}>
