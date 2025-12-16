@@ -21,12 +21,6 @@ interface ModelOption {
 
 const AVAILABLE_MODELS: ModelOption[] = [
   {
-    id: "gemini-2.5-flash",
-    name: "Gemini 2.5 Flash",
-    provider: "gemini",
-    description: "빠르고 효율적인 Google AI 모델",
-  },
-  {
     id: "claude-sonnet-4-20250514",
     name: "Claude Sonnet 4",
     provider: "claude",
@@ -37,6 +31,12 @@ const AVAILABLE_MODELS: ModelOption[] = [
     name: "Claude Opus 4",
     provider: "claude",
     description: "가장 강력한 Anthropic AI 모델",
+  },
+  {
+    id: "gemini-2.5-flash",
+    name: "Gemini 2.5 Flash",
+    provider: "gemini",
+    description: "빠르고 효율적인 Google AI 모델",
   },
 ];
 
