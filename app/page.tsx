@@ -291,47 +291,28 @@ export default function Home() {
           sidebarOpen ? "lg:ml-[280px]" : ""
         }`}
       >
-        {/* Header */}
+        {/* Header - Single row on all devices */}
         <header className="bg-white dark:bg-zinc-950 border-b dark:border-zinc-800 shadow-sm z-10">
-          {/* Mobile: 2-row layout / Desktop: 1-row layout */}
-          
-          {/* Row 1: Logo (centered on mobile, left on desktop) */}
-          <div className="flex items-center justify-center md:hidden py-3 border-b dark:border-zinc-800">
-            {/* SORANGSU Logo - Mobile centered */}
-            <div className="flex items-center gap-2">
-              <div className="relative">
-                <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-violet-500 via-purple-500 to-fuchsia-500 flex items-center justify-center shadow-lg">
-                  <span className="text-white font-black text-base">S</span>
-                </div>
-                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-400 rounded-full border-2 border-white dark:border-zinc-950"></div>
-              </div>
-              <span className="font-extrabold text-xl tracking-tight bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 bg-clip-text text-transparent">
-                SORANGSU
-              </span>
-            </div>
-          </div>
-
-          {/* Row 2 (mobile) / Row 1 (desktop): Controls */}
-          <div className="flex items-center justify-between px-3 md:px-6 py-2 md:py-4">
-            <div className="flex items-center gap-2 md:gap-3">
+          <div className="flex items-center justify-between px-2 md:px-6 py-2 md:py-4">
+            <div className="flex items-center gap-1.5 md:gap-3">
               {/* Sidebar Toggle - Mobile */}
               <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition-colors md:hidden"
+                className="p-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition-colors md:hidden"
                 title="사이드바"
               >
                 <Menu className="w-5 h-5" />
               </button>
 
-              {/* SORANGSU Logo - Desktop only */}
-              <div className="hidden md:flex items-center gap-2">
+              {/* SORANGSU Logo */}
+              <div className="flex items-center gap-1.5 md:gap-2">
                 <div className="relative">
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 via-purple-500 to-fuchsia-500 flex items-center justify-center shadow-lg">
-                    <span className="text-white font-black text-sm">S</span>
+                  <div className="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-gradient-to-br from-violet-500 via-purple-500 to-fuchsia-500 flex items-center justify-center shadow-lg">
+                    <span className="text-white font-black text-xs md:text-sm">S</span>
                   </div>
-                  <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-400 rounded-full border-2 border-white dark:border-zinc-950"></div>
+                  <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 md:w-3 md:h-3 bg-emerald-400 rounded-full border-2 border-white dark:border-zinc-950"></div>
                 </div>
-                <span className="font-extrabold text-lg tracking-tight bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 bg-clip-text text-transparent">
+                <span className="font-extrabold text-base md:text-lg tracking-tight bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 bg-clip-text text-transparent">
                   SORANGSU
                 </span>
               </div>
