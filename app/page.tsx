@@ -356,13 +356,18 @@ export default function Home() {
                 {modelDropdownOpen && (
                   <div 
                     ref={dropdownMenuRef}
-                    className="fixed md:absolute top-auto md:top-full left-2 right-2 md:left-0 md:right-auto mt-2 md:w-72 bg-white dark:bg-zinc-800 rounded-lg shadow-xl border dark:border-zinc-700 overflow-hidden z-[9999]"
+                    className="fixed md:absolute top-14 md:top-full left-2 right-2 md:left-0 md:right-auto md:mt-2 md:w-72 bg-white dark:bg-zinc-800 rounded-lg shadow-xl border dark:border-zinc-700 overflow-hidden z-[9999]"
+                    onClick={(e) => e.stopPropagation()}
                   >
                     {AVAILABLE_MODELS.map((model) => (
                       <button
                         key={model.id}
-                        onClick={() => handleSelectModel(model)}
-                        className={`w-full flex items-start gap-3 px-4 py-3 hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors text-left ${
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          handleSelectModel(model);
+                        }}
+                        className={`w-full flex items-start gap-3 px-4 py-3 hover:bg-zinc-100 dark:hover:bg-zinc-700 active:bg-zinc-200 dark:active:bg-zinc-600 transition-colors text-left ${
                           selectedModel.id === model.id ? "bg-zinc-50 dark:bg-zinc-700/50" : ""
                         }`}
                       >
