@@ -79,6 +79,7 @@ export default function Home() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownMenuRef = useRef<HTMLDivElement>(null);
 
   const { servers, serverStates } = useMcp();
   const {
@@ -104,7 +105,12 @@ export default function Home() {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      const target = event.target as Node;
+      const isOutsideButton = dropdownRef.current && !dropdownRef.current.contains(target);
+      const isOutsideMenu = dropdownMenuRef.current && !dropdownMenuRef.current.contains(target);
+      
+      // Only close if click is outside both the button and the menu
+      if (isOutsideButton && (isOutsideMenu || !dropdownMenuRef.current)) {
         setModelDropdownOpen(false);
       }
     };
@@ -348,7 +354,10 @@ export default function Home() {
                 </button>
 
                 {modelDropdownOpen && (
-                  <div className="fixed md:absolute top-auto md:top-full left-2 right-2 md:left-0 md:right-auto mt-2 md:w-72 bg-white dark:bg-zinc-800 rounded-lg shadow-xl border dark:border-zinc-700 overflow-hidden z-[9999]">
+                  <div 
+                    ref={dropdownMenuRef}
+                    className="fixed md:absolute top-auto md:top-full left-2 right-2 md:left-0 md:right-auto mt-2 md:w-72 bg-white dark:bg-zinc-800 rounded-lg shadow-xl border dark:border-zinc-700 overflow-hidden z-[9999]"
+                  >
                     {AVAILABLE_MODELS.map((model) => (
                       <button
                         key={model.id}
